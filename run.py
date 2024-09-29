@@ -63,16 +63,16 @@ def ship_num_option():
             return get_ship_option
         else:
             print('Please choose 1, 2 or 3 instead.')
-            return get_ship_option()                   # if input outside numerical options, loop to function start
+            return ship_num_option()                   # if input outside numerical options, loop to function start
     except ValueError:
         print("Let's stick to whole numbers, please...")
-        return get_ship_option()                       # if input isn't a number, raise error and restart function
+        return ship_num_option()                       # if input isn't a number, raise error and restart function
 
 def get_ship_num(get_ship_option):
     """
     Function to translate the user's choice in to the number of ships on the game board for the players
     """
-    if get_ship_option == 1:                            # if player inputs 1 then the size = 4 x 4 game board etc.
+    if get_ship_option == 1:                            # if player inputs 1 then the number of ships = 4 etc.
         num_of_ships = 4
         ship_num = "4"
     elif get_ship_option == 2:
