@@ -6,7 +6,11 @@ def get_player_name():
     Function to get the player's name and return it to the game
     """
     player_one = input("Please enter your name: \n")
-    return player_one
+    if player_one.isalpha():                            # ensure that the player has entered letters for their name
+        return player_one
+    else:
+        print("Let's stick to letters for the time being, Mr Musk...")
+        return get_player_name()                        # If letters haven't been used, return to start of function
 
 def get_game_size():
     """
@@ -31,6 +35,9 @@ def get_ship_num():
     return ship_num
 
 def read_to_play():
+    """
+    Function to determine if the player is happy with game parameters
+    """
     start_game = input('Y / N: ')
     return start_game
 
