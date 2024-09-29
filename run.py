@@ -19,8 +19,24 @@ def get_game_size():
     game_size = input("1 / 2 / 3? ")
     return game_size
 
+def get_ship_num():
+    """
+    Function to provide the user the choice of how many ships will populate the game board
+    """
+    print('How many ships would you like?')
+    print('Press 1 for 4')
+    print('Press 2 for 5')
+    print('Press 3 for 6')
+    ship_num = input("1 / 2 / 3? ")
+    return ship_num
+
+def read_to_play():
+    start_game = input('Y / N: ')
+    return start_game
+
 player_one = get_player_name()
 game_size = get_game_size()
+ship_num = get_ship_num()
+start_game = read_to_play()
 
-
-print(f'Okay, {player_one}, you want a {game_size} with x ships. Are you ready?')
+print(f'Okay, {player_one}, you want a {game_size} with {ship_num} ships. Are you ready? {start_game}')
