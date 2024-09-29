@@ -66,9 +66,23 @@ def ship_num_option():
             return get_ship_option()                   # if input outside numerical options, loop to function start
     except ValueError:
         print("Let's stick to whole numbers, please...")
-        return game_size_option()                       # if input isn't a number, raise error and restart function
+        return get_ship_option()                       # if input isn't a number, raise error and restart function
+
+def get_ship_num(get_ship_option):
+    """
+    Function to translate the user's choice in to the number of ships on the game board for the players
+    """
+    if get_ship_option == 1:                            # if player inputs 1 then the size = 4 x 4 game board etc.
+        num_of_ships = 4
+        ship_num = "4"
+    elif get_ship_option == 2:
+        num_of_ships = 5
+        ship_num = "5"
+    elif get_ship_option == 3:
+        num_of_ships = 6
+        ship_num = "6"
     
-    return ship_num
+    return num_of_ships, ship_num
 
 def read_to_play():
     """
@@ -79,13 +93,19 @@ def read_to_play():
 
 player_one = get_player_name()
 print(player_one)
+
 game_size_option = game_size_option()
 game_size = get_game_size(game_size_option)
 print(game_size)
-ship_num = get_ship_num()
+
+ship_num_option = ship_num_option()
+num_of_ships = get_ship_num(ship_num_option)
+ship_num = get_ship_num(ship_num_option)
+print(ship_num)
+
+start_game = read_to_play()
 
 print(f'Okay, {player_one}, you want a {game_size} with {ship_num} ships. Are you ready? {start_game}')
-start_game = read_to_play()
 
 
 
