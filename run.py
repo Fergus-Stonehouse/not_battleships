@@ -4,12 +4,12 @@ def get_player_name():
     """
     while True:
         player_one = input("Please enter your name: \n")
-        if len(player_one) <2:                        # Try to get the user's initials at least
+        if len(player_one) <1:                          # make sure user has actually put entered a name
+            print("No, really, please enter your name... I want to know the name of the person I'm about to thrash...")
+        elif len(player_one) <2:                        # Try to get the user's initials at least
             print("Go on, just your initials will do... Minimum 2 letters, please...")
         elif not player_one.isalpha():                      # ensure that the player has entered letters for their name
             print("Let's stick to letters for the time being, Mr Musk...")
-        elif len(player_one) <1:                          # make sure user has actually put entered a name
-            print("No, really, please enter your name... I want to know the name of the person I'm about to thrash...")
         else:
             return player_one
  
