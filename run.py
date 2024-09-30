@@ -13,7 +13,6 @@ def get_player_name():
         else:
             return player_one
  
-
 def game_size_option():
     """
     Function to provide the user the choice of game board size and validate the input
@@ -22,17 +21,20 @@ def game_size_option():
     print('Press 1 for 4 x 4')
     print('Press 2 for 5 x 5')
     print('Press 3 for 6 x 6')
-    game_size_option = input("1 / 2 / 3? ")
-    try:                                                # ensure the player is inputting a number 1 - 3 - check string length
-        game_size_option = int(game_size_option)
-        if 1<= game_size_option <=3:
-            return game_size_option
-        else:
-            print('Please choose 1, 2 or 3 instead.')
-            return game_size_option()                   # if input outside numerical options, loop to function start
-    except ValueError:
-        print("Let's stick to whole numbers, please...")
-        return game_size_option()                       # if input isn't a number, raise error and restart function
+    while True:
+        game_size_option = input("1 / 2 / 3? ")             # ensure the user is only inputting a single digit
+        if len(game_size_option) !=1 or not game_size_option.isdigit():
+            print("We just need a single number between 1 and 3, please")
+            continue
+        try:                                                # ensure the player is inputting a number 1 - 3
+            game_size_option = int(game_size_option)
+            if 1<= game_size_option <=3:
+                return game_size_option
+            else:
+                print('Please choose 1, 2 or 3 instead.')       # if input outside numerical options, loop to function start                   
+        except ValueError:
+            print("Let's stick to whole numbers, please...")    # if input isn't a number, raise error and restart function
+            continue                       
     
 def get_game_size(game_size_option):
     """
