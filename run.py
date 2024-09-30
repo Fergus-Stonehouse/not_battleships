@@ -2,12 +2,17 @@ def get_player_name():
     """
     Function to get the player's name and return it to the game and validate the input
     """
-    player_one = input("Please enter your name: \n")
-    if player_one.isalpha():                            # ensure that the player has entered letters for their name
-        return player_one
-    else:
-        print("Let's stick to letters for the time being, Mr Musk...")
-        return get_player_name()                        # If letters haven't been used, return to start of function
+    while True:
+        player_one = input("Please enter your name: \n")
+        if len(player_one) <2:                        # Try to get the user's initials at least
+            print("Go on, just your initials will do... Minimum 2 letters, please...")
+        elif not player_one.isalpha():                      # ensure that the player has entered letters for their name
+            print("Let's stick to letters for the time being, Mr Musk...")
+        elif len(player_one) <1:                          # make sure user has actually put entered a name
+            print("No, really, please enter your name... I want to know the name of the person I'm about to thrash...")
+        else:
+            return player_one
+ 
 
 def game_size_option():
     """
@@ -18,7 +23,7 @@ def game_size_option():
     print('Press 2 for 5 x 5')
     print('Press 3 for 6 x 6')
     game_size_option = input("1 / 2 / 3? ")
-    try:                                                # ensure the player is inputting a number 1 - 3
+    try:                                                # ensure the player is inputting a number 1 - 3 - check string length
         game_size_option = int(game_size_option)
         if 1<= game_size_option <=3:
             return game_size_option
@@ -84,12 +89,7 @@ def get_ship_num(get_ship_option):
     
     return num_of_ships, ship_num
 
-def read_to_play():
-    """
-    Function to determine if the player is happy with game parameters
-    """
-    start_game = input('Y / N: ')
-    return start_game
+
 
 player_one = get_player_name()
 print(player_one)
@@ -105,7 +105,16 @@ print(ship_num)
 
 start_game = read_to_play()
 
-print(f'Okay, {player_one}, you want a {game_size} with {ship_num} ships. Are you ready? {start_game}')
+print(f'Okay, {player_one}, you want a {game_size} with {ship_num} ships.')
 
-
+"""
+def read_to_play():
+   
+    Function to determine if the player is happy with game parameters
+    
+    ready_player_one = input(' Are you ready? Y / N: ').lower
+    if ready_player_one == y:
+        start_game()
+    else:
+"""
 
