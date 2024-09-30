@@ -34,7 +34,7 @@ def game_size_option():
                 print('Please choose 1, 2 or 3 instead.')       # if input outside numerical options, loop to function start                   
         except ValueError:
             print("Let's stick to whole numbers, please...")    # if input isn't a number, raise error and restart function
-            continue                       
+            continue
     
 def get_game_size(game_size_option):
     """
@@ -63,17 +63,21 @@ def ship_num_option():
     print('Press 1 for 4')
     print('Press 2 for 5')
     print('Press 3 for 6')
-    get_ship_option = input("1 / 2 / 3? ")
-    try:                                                # ensure the player is inputting a number 1 - 3
-        get_ship_option = int(get_ship_option)
-        if 1<= get_ship_option <=3:
-            return get_ship_option
-        else:
-            print('Please choose 1, 2 or 3 instead.')
-            return ship_num_option()                   # if input outside numerical options, loop to function start
-    except ValueError:
-        print("Let's stick to whole numbers, please...")
-        return ship_num_option()                       # if input isn't a number, raise error and restart function
+    while True:
+        get_ship_option = input("1 / 2 / 3? ")             # ensure the user is only inputting a single digit
+        if len(get_ship_option) !=1 or not get_ship_option.isdigit():
+            print("We just need a single number between 1 and 3, please")
+            continue
+        try:                                                # ensure the player is inputting a number 1 - 3
+            get_ship_option = int(get_ship_option)
+            if 1<= get_ship_option <=3:
+                return get_ship_option
+            else:
+                print('Please choose 1, 2 or 3 instead.')
+                continue                   # if input outside numerical options, loop to function start
+        except ValueError:
+            print("Let's stick to whole numbers, please...")
+            continue                       # if input isn't a number, raise error and restart function
 
 def get_ship_num(get_ship_option):
     """
@@ -97,7 +101,7 @@ player_one = get_player_name()
 print(player_one)
 
 game_size_option = game_size_option()
-game_size = get_game_size(game_size_option)
+game_size = get_game_size(get_game_size)
 print(game_size)
 
 ship_num_option = ship_num_option()
@@ -105,7 +109,7 @@ num_of_ships = get_ship_num(ship_num_option)
 ship_num = get_ship_num(ship_num_option)
 print(ship_num)
 
-start_game = read_to_play()
+# start_game = read_to_play()
 
 print(f'Okay, {player_one}, you want a {game_size} with {ship_num} ships.')
 
