@@ -1,3 +1,26 @@
+def game_menu():
+    """
+    Function to welcome the player to the game and provide intial options
+    """
+    print("Welcome to Not Battleships\n")
+    print("Main Menu")
+    print("Play a Game - Press 1")
+    print("How to Play - Press 2")
+    print("End Program - Press 3")
+    while True:
+        game_menu_options = input("1, 2, or 3?: \n")
+        if len(game_menu_options) !=1 or not game_menu_options.isdigit():
+            print("Menu Options are limited to a number between 1 and 3, please")
+            continue
+            if game_menu_options == 1:
+                get_player_name()
+            elif game_menu_options == 2:
+                print("Boilerplate for game instructions")
+                continue
+            elif game_menu_options == 3:
+                break
+
+
 def get_player_name():
     """
     Function to get the player's name and return it to the game and validate the input
@@ -108,14 +131,16 @@ ship_num = get_ship_num(ship_num_option)
 
 print(f'Okay, {player_one}, you want a {game_size} with {ship_num} ships. ')
 
-while ready_player_one not in ['y', 'n']:       # check the player is happy with the settings and continue if so
-    print("For Yes press 'Y' or 'y' and for No press 'N' or 'n', please")
-    ready_player_one = input("").lower()
-if ready_player_one == 'y':
-    print("Starting game...")
-elif ready_player_one == 'n':
-    print("Resetting...")
-    return
+ready_player_one not in ['y', 'n']:       # check the player is happy with the settings and continue if so
+print("For Yes press 'Y' or 'y' and for No press 'N' or 'n', please")
+ready_player_one = input("").lower()
+    if ready_player_one == 'y':
+        print("Starting game...")
+        start_game()
+    elif ready_player_one == 'n':
+        print("Resetting...")
+        game_menu()
 
-# def start_game(game_size, num_of_ships):
+# def start_game():
+
 
