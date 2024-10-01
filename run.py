@@ -98,29 +98,24 @@ def get_ship_num(get_ship_option):
 
 
 player_one = get_player_name()
-print(player_one)
 
 game_size_option = game_size_option()
-game_size = get_game_size(get_game_size)
-print(game_size)
+game_size = get_game_size(game_size_option)
 
 ship_num_option = ship_num_option()
 num_of_ships = get_ship_num(ship_num_option)
 ship_num = get_ship_num(ship_num_option)
-print(ship_num)
 
-# start_game = read_to_play()
+print(f'Okay, {player_one}, you want a {game_size} with {ship_num} ships. ')
 
-print(f'Okay, {player_one}, you want a {game_size} with {ship_num} ships.')
+while ready_player_one not in ['y', 'n']:       # check the player is happy with the settings and continue if so
+    print("For Yes press 'Y' or 'y' and for No press 'N' or 'n', please")
+    ready_player_one = input("").lower()
+if ready_player_one == 'y':
+    print("Starting game...")
+elif ready_player_one == 'n':
+    print("Resetting...")
+    return
 
-"""
-def read_to_play():
-   
-    Function to determine if the player is happy with game parameters
-    
-    ready_player_one = input(' Are you ready? Y / N: ').lower
-    if ready_player_one == y:
-        start_game()
-    else:
-"""
+# def start_game(game_size, num_of_ships):
 
