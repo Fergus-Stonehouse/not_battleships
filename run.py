@@ -135,8 +135,11 @@ def display_current_boards(game_board):
     """
     Function for boilerplate display of a board
     """
+    print(f"{player_one}'s Board")
     for row in game_board:
         print(" ".join(row))
-
+    print("Computer's Board")
+    for row in game_board:
+        print(" ".join(row))
 display_boards = display_current_boards(game_board)
 # def start_game():
