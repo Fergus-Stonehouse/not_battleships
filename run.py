@@ -36,6 +36,7 @@ def get_player_name():
         else:
             return player_one
  
+
 def game_size_option():
     """
     Function to provide the user the choice of game board size and validate the input
@@ -47,36 +48,27 @@ def game_size_option():
     while True:
         game_size_option = input("1 / 2 / 3? ")             # ensure the user is only inputting a single digit
         if len(game_size_option) !=1 or not game_size_option.isdigit():
-            print("We just need a single number between 1 and 3, please")
-            continue
-        try:                                                # ensure the player is inputting a number 1 - 3
-            game_size_option = int(game_size_option)
-            if 1<= game_size_option <=3:
-                return game_size_option
-            else:
-                print('Please choose 1, 2 or 3 instead.')       # if input outside numerical options, loop to function start                   
-        except ValueError:
-            print("Let's stick to whole numbers, please...")    # if input isn't a number, raise error and restart function
-            continue
-    
+            print("We just need a single number between 1 and 3, please")                                  
+        game_size_option = int(game_size_option)
+        if game_size_option >=1 or game_size_option <=3:    # ensure the player is inputting a number 1 - 3
+            return game_size_option
+        else:
+            print('Please choose 1, 2 or 3 instead.')       # if input outside numerical options, loop to function start                   
+
+
 def get_game_size(game_size_option):
     """
     Function to translate the user's choice in to the dimensions of the game board
     """
     if game_size_option == 1:                            # if player inputs 1 then the size = 4 x 4 game board etc.
-        game_width = 4
-        game_height = 4
-        game_size = "4 x 4"
+        game_size = 4
     elif game_size_option == 2:
-        game_width = 5
-        game_height = 5
-        game_size = "5 x 5"
+        game_size = 5
     elif game_size_option == 3:
-        game_width = 6
-        game_height = 6
-        game_size = "6 x 6"
+        game_size = 6
     
-    return game_width, game_height, game_size
+    return game_size
+
 
 def ship_num_option():
     """
@@ -90,34 +82,25 @@ def ship_num_option():
         get_ship_option = input("1 / 2 / 3? ")             # ensure the user is only inputting a single digit
         if len(get_ship_option) !=1 or not get_ship_option.isdigit():
             print("We just need a single number between 1 and 3, please")
-            continue
-        try:                                                # ensure the player is inputting a number 1 - 3
-            get_ship_option = int(get_ship_option)
-            if 1<= get_ship_option <=3:
+        get_ship_option = int(get_ship_option)
+        if get_ship_option >=1 or get_ship_option <=3:    # ensure the player is inputting a number 1 - 3
                 return get_ship_option
-            else:
-                print('Please choose 1, 2 or 3 instead.')
-                continue                   # if input outside numerical options, loop to function start
-        except ValueError:
-            print("Let's stick to whole numbers, please...")
-            continue                       # if input isn't a number, raise error and restart function
+        else:
+            print('Please choose 1, 2 or 3 instead.')
+
 
 def get_ship_num(get_ship_option):
     """
     Function to translate the user's choice in to the number of ships on the game board for the players
     """
     if get_ship_option == 1:                            # if player inputs 1 then the number of ships = 4 etc.
-        num_of_ships = 4
-        ship_num = "4"
+        ship_num = 4
     elif get_ship_option == 2:
-        num_of_ships = 5
-        ship_num = "5"
+        ship_num = 5
     elif get_ship_option == 3:
-        num_of_ships = 6
-        ship_num = "6"
+        ship_num = 6
     
-    return num_of_ships, ship_num
-
+    return ship_num
 
 
 player_one = get_player_name()
@@ -126,21 +109,24 @@ game_size_option = game_size_option()
 game_size = get_game_size(game_size_option)
 
 ship_num_option = ship_num_option()
-num_of_ships = get_ship_num(ship_num_option)
 ship_num = get_ship_num(ship_num_option)
 
-print(f'Okay, {player_one}, you want a {game_size} with {ship_num} ships. ')
+print(f'Okay, {player_one}, you want a {game_size} x {game_size} game board with {ship_num} ships. \n')
 
-ready_player_one not in ['y', 'n']:       # check the player is happy with the settings and continue if so
-print("For Yes press 'Y' or 'y' and for No press 'N' or 'n', please")
-ready_player_one = input("").lower()
-    if ready_player_one == 'y':
-        print("Starting game...")
-        start_game()
-    elif ready_player_one == 'n':
-        print("Resetting...")
-        game_menu()
+
+def build_game_board(game_size):
+    """
+    Function to build the initial game board based on user's choice
+    """
+    game_board=[]                           # make the list for the game board(s)
+    for row in range(game_size):            # use the user's choice to iterate the rows
+        rows = []
+        for column in range(game_size):     # use the user's choice to iterate the columns
+            rows.append(" - ")              # empty (or secret) spaces on the board markeed with a -
+        game_board.append(rows)             # add the newly populated row to the game board
+    return game_board
+
+game_board = build_game_board(game_size)
+print(game_board)
 
 # def start_game():
-
-
