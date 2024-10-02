@@ -1,7 +1,6 @@
+"""
 def game_menu():
-    """
-    Function to welcome the player to the game and provide intial options
-    """
+
     print("Welcome to Not Battleships\n")
     print("Main Menu")
     print("Play a Game - Press 1")
@@ -12,6 +11,11 @@ def game_menu():
         if len(game_menu_options) !=1 or not game_menu_options.isdigit():
             print("Menu Options are limited to a number between 1 and 3, please")
             continue
+            game_menu_options = int(game_menu_options)
+            if game_menu_options >=1 and game_menu_options <=3:
+                get_player_name()
+            else:
+                print('Please choose 1, 2 or 3 instead.')
             if game_menu_options == 1:
                 get_player_name()
             elif game_menu_options == 2:
@@ -20,7 +24,8 @@ def game_menu():
             elif game_menu_options == 3:
                 break
 
-
+game_menu()
+"""
 def get_player_name():
     """
     Function to get the player's name and return it to the game and validate the input
@@ -133,19 +138,19 @@ player_board = game_board
 computer_board = game_board
 
 
-def display_current_boards(game_board):
+def display_current_boards(player_board, computer_board):
     """
     Function for boilerplate display of a board
     """
     print(f"{player_one}'s Board \n")
-    for row in game_board:
+    for row in player_board:
         print(" ".join(row))
     print("\n")
     print("Computer's Board \n")
-    for row in game_board:
+    for row in computer_board:
         print(" ".join(row))
     print("\n")
         
-display_boards = display_current_boards(game_board)
+display_boards = display_current_boards(player_board, computer_board)
 
 # def start_game():
