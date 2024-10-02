@@ -48,12 +48,13 @@ def game_size_option():
     while True:
         game_size_option = input("1 / 2 / 3? ")             # ensure the user is only inputting a single digit
         if len(game_size_option) !=1 or not game_size_option.isdigit():
-            print("We just need a single number between 1 and 3, please")                                  
+            print("We just need a single number between 1 and 3, please")
+            continue                        
         game_size_option = int(game_size_option)
-        if game_size_option >=1 or game_size_option <=3:    # ensure the player is inputting a number 1 - 3
+        if game_size_option >=1 and game_size_option <=3:    # ensure the player is inputting a number 1 - 3
             return game_size_option
         else:
-            print('Please choose 1, 2 or 3 instead.')       # if input outside numerical options, loop to function start                   
+            print('Please choose 1, 2 or 3 instead.')       # if input outside numerical options, loop to function start
 
 
 def get_game_size(game_size_option):
@@ -82,8 +83,9 @@ def ship_num_option():
         get_ship_option = input("1 / 2 / 3? ")             # ensure the user is only inputting a single digit
         if len(get_ship_option) !=1 or not get_ship_option.isdigit():
             print("We just need a single number between 1 and 3, please")
+            continue
         get_ship_option = int(get_ship_option)
-        if get_ship_option >=1 or get_ship_option <=3:    # ensure the player is inputting a number 1 - 3
+        if get_ship_option >=1 and get_ship_option <=3:    # ensure the player is inputting a number 1 - 3
                 return get_ship_option
         else:
             print('Please choose 1, 2 or 3 instead.')
@@ -135,11 +137,15 @@ def display_current_boards(game_board):
     """
     Function for boilerplate display of a board
     """
-    print(f"{player_one}'s Board")
+    print(f"{player_one}'s Board \n")
     for row in game_board:
         print(" ".join(row))
-    print("Computer's Board")
+    print("\n")
+    print("Computer's Board \n")
     for row in game_board:
         print(" ".join(row))
+    print("\n")
+        
 display_boards = display_current_boards(game_board)
+
 # def start_game():
