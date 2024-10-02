@@ -127,6 +127,16 @@ def build_game_board(game_size):
     return game_board
 
 game_board = build_game_board(game_size)
-print(game_board)
+player_board = game_board
+computer_board = game_board
 
+
+def display_current_boards(game_board):
+    """
+    Function for boilerplate display of a board
+    """
+    for row in game_board:
+        print(" ".join(row))
+
+display_boards = display_current_boards(game_board)
 # def start_game():
