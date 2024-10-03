@@ -189,10 +189,11 @@ def position_player_ships(ship_num, player_board):
         row = random.randint(0, len(player_board) - 1)
         column = random.randint(0, len(player_board[0]) - 1)
         player_coords = (row, column)
-        if player_coords not in player_ship_coords and player_board[row][column] == " - ":
-            player_board[row][column] = " S "
-            player_ship_coords.add(player_coords)
-            ships_placed += 1
+        if player_coords not in player_ship_coords:
+            if player_board[row][column] == " - ":
+                player_board[row][column] = " S "
+                player_ship_coords.add(player_coords)
+                ships_placed += 1
     return player_board
 
 
@@ -206,10 +207,11 @@ def position_computer_ships(ship_num, computer_board):
         row = random.randint(0, len(computer_board) - 1)
         column = random.randint(0, len(computer_board[0]) - 1)
         computer_coords = (row, column)
-        if computer_coords not in computer_ship_coords and computer_board[row][column] == " - ":
-            computer_board[row][column] = " S "
-            computer_ship_coords.add(computer_coords)
-            ships_placed += 1
+        if computer_coords not in computer_ship_coords:
+            if computer_board[row][column] == " - ":
+                computer_board[row][column] = " S "
+                computer_ship_coords.add(computer_coords)
+                ships_placed += 1
     return computer_board
 
 
