@@ -11,7 +11,7 @@ def game_menu():
     while True:
         game_menu_options = input("Enter your choice: \n")
         if len(game_menu_options) != 1 or not game_menu_options.isdigit():
-            print("Menu Options are limited to a number between 1 and 3, please")
+            print("Menu Options are between 1 and 3, please")
             continue
 
         game_menu_options = int(game_menu_options)
@@ -30,11 +30,16 @@ def game_menu():
 def instructions():
     print("How to Play\n")
     print("\n")
-    print("Not Battleships plays in the same way as a normal game of Battleships:")
-    print("The players have a board with their ships hidden from the other player.")
-    print("In this game, the ships have been randomly placed for both player and the computer.")
-    print("The player and the computer take turns picking out the X and then the Y axis for their salvo.")
-    print("If the coordinates of the shot coincide with the location of a Ship, the Ship is destroyed.")
+    print("Not Battleships plays in the same way as a normal game of "
+          "Battleships:")
+    print("The players have a board with their ships hidden from the "
+          "other player.")
+    print("In this game, the ships have been randomly placed for both "
+          "player and the computer.")
+    print("The player and the computer take turns picking out the X and "
+          "then the Y axis for their salvo.")
+    print("If the coordinates of the shot coincide with the location of "
+          "a Ship, the Ship is destroyed.")
     print("The winner is the player who destroys the other fleet.")
     print("\n")
     print("Good Hunting!")
@@ -47,7 +52,8 @@ game_menu()
 
 def get_player_name():
     """
-    Function to get the player's name and return it to the game and validate the input
+    Function to get the player's name and return it to the game
+    and validate the input
     """
     while True:
         player_one = input("Please enter your name: \n")
@@ -147,7 +153,8 @@ game_size = get_game_size(game_size_option)
 ship_num_option = ship_num_option()
 ship_num = get_ship_num(ship_num_option)
 
-print(f'Okay, {player_one}, you want a {game_size} x {game_size} game board with {ship_num} ships. \n')
+print(f'Okay, {player_one}, you want a {game_size} x {game_size} game '
+      'board with {ship_num} ships. \n')
 
 
 def build_game_board(game_size):
@@ -244,7 +251,8 @@ def player_turn(player_board, computer_board):
             while True:
                 input_y = int(input("\nEnter the Y axis of your shot: \n"))
                 if (input_y <= 0 or input_y > game_size) or (input_x, input_y) in previous_player_turn:
-                    print("Wait... Either you've tried that before OR you're WAAAAY off the board... try again.\n")
+                    print("Wait... Either you've tried that before OR "
+                          "you're WAAAAY off the board... try again.\n")
                 else:
                     break
             valid_shot = True
