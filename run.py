@@ -24,7 +24,6 @@ def game_menu():
         else:
             print('Please choose 1, 2 or 3 instead.\n')
 
-game_menu()
 
 def instructions():
     print("How to Play\n")
@@ -37,7 +36,11 @@ def instructions():
     print("The winner is the player who destroys the other fleet.\n")
     print("\n")
     print("Good Hunting!\n")
+    print("\n")
     game_menu()
+
+
+game_menu()
 
 def get_player_name():
     """
