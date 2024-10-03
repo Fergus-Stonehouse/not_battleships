@@ -175,7 +175,6 @@ def position_computer_ships(ship_num, computer_board):
     return computer_board
     
 
-
 def display_current_boards(player_board, computer_board):
     """
     Function for displaying the boards
@@ -194,3 +193,35 @@ player_board, computer_board = make_specific_boards()
 player_board = position_player_ships(ship_num, player_board)
 computer_board = position_computer_ships(ship_num, computer_board)
 display_current_boards(player_board, computer_board)
+
+def player_turn(player_board, computer_board):
+    """
+    Function for the player to take their turn
+    """
+    print(f"\nTake your shot, {player_one}!\n")
+    print(f"Enter a number for each axis between 1 and {game_size}.\n")
+
+    previous_player_turn = set()
+
+    input_x = 0
+    input_x = int(input("\nEnter the X axis of your shot: \n"))                     # Get the user's x axis
+    while True:
+        if(input_x <=0 or input_x > game_size) or (input_x, 0) in previous_player_turn:    # validate the shot
+            print("Wait... Either you've tried thar before OR you're WAAAAY off the board... try again.\n")
+        else:
+            break
+    
+    input_y = 0
+    input_y = int(input("\nEnter the Y axis of your shot: \n"))                     # Get the user's y axis
+    while True:
+        if(input_y <=0 or input_y > game_size) or (input_x, input_y) in previous_player_turn:    # validate the shot
+            print("Wait... Either you've tried thar before OR you're WAAAAY off the board... try again.\n")
+        else:
+            break
+    
+    previous_player_turn.add((input_x, input_y))               # record the shot for later turns
+    return previous_player_turn
+
+player_turn(player_board, computer_board)
+previous_player_turn = player_turn(player_board, computer_board)
+print(previous_player_turn)
