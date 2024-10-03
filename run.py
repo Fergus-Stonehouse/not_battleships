@@ -18,8 +18,7 @@ def game_menu():
             if game_menu_options == 1:
                 break
             elif game_menu_options == 2:
-                print("Boilerplate for game instructions\n")
-                continue
+                instructions()
             elif game_menu_options == 3:
                 break
         else:
@@ -27,6 +26,18 @@ def game_menu():
 
 game_menu()
 
+def instructions():
+    print("How to Play\n")
+    print("\n")
+    print("Not Battleships plays in the same way as a normal game of Battleships:\n")
+    print("The players have a board with their ships hidden from the other player.\n")
+    print("In this game the ships have been randomly placed for both player and the computer.\n")
+    print("The player and the computer take turns picking out the X and then the Y axis for their salvo.\n")
+    print("If the coordinates of the shot coincide with the location of a Ship, the Ship is destroyed.\n")
+    print("The winner is the player who destroys the other fleet.\n")
+    print("\n")
+    print("Good Hunting!\n")
+    game_menu()
 
 def get_player_name():
     """
@@ -201,27 +212,29 @@ def player_turn(player_board, computer_board):
     print(f"\nTake your shot, {player_one}!\n")
     print(f"Enter a number for each axis between 1 and {game_size}.\n")
 
-    previous_player_turn = set()
-
     input_x = 0
+    input_y = 0
+
     input_x = int(input("\nEnter the X axis of your shot: \n"))                     # Get the user's x axis
     while True:
-        if(input_x <=0 or input_x > game_size) or (input_x, 0) in previous_player_turn:    # validate the shot
-            print("Wait... Either you've tried thar before OR you're WAAAAY off the board... try again.\n")
+        if(input_x <=0 or input_x > game_size):    # validate the shot
+            print("Wait... you're WAAAAY off the board... try again.\n")
+            continue
         else:
-            break
+            input_y = int(input("\nEnter the Y axis of your shot: \n"))                     # Get the user's y axis
+            while True:
+                if(input_y <=0 or input_y > game_size) or (input_x, input_y) in previous_player_turn:    # validate the shot
+                    print("Wait... Either you've tried thar before OR you're WAAAAY off the board... try again.\n")
+                else:
+                    break
     
-    input_y = 0
-    input_y = int(input("\nEnter the Y axis of your shot: \n"))                     # Get the user's y axis
-    while True:
-        if(input_y <=0 or input_y > game_size) or (input_x, input_y) in previous_player_turn:    # validate the shot
-            print("Wait... Either you've tried thar before OR you're WAAAAY off the board... try again.\n")
-        else:
-            break
-    
-    previous_player_turn.add((input_x, input_y))               # record the shot for later turns
-    return previous_player_turn
+    previous_player_turn.add((input_x, input_y))                # record the shot for later turns
+    if computer_board[input_x][input_y] == " S ":              # check if Ship is at coordinates
+        computer_board[input_x][input_y] = " H "               # mark location with " H " if a HIT
+    else:
+        computer_board[input_x][input_y] = " M "               # mark location with " M " if a MISS
 
+previous_player_turn = set()    
 player_turn(player_board, computer_board)
-previous_player_turn = player_turn(player_board, computer_board)
-print(previous_player_turn)
+
+display_current_boards(player_board, computer_board)
