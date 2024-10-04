@@ -162,6 +162,7 @@ def build_game_board(game_size):
     Function to build the initial game board based on user's choice
     """
     game_board = []
+    
     for row in range(game_size):
         rows = []
         for column in range(game_size):
@@ -247,12 +248,12 @@ def player_turn(player_board, computer_board):
 
     while not valid_shot:
         input_x = int(input("\nEnter the X axis of your shot: \n"))
-        if (input_x <= 0 or input_x > game_size) or (input_x, 0) in previous_player_turn:
+        if (input_x <= 0 or input_x > game_size) or (input_x - 1, 0) in previous_player_turn:
             print("Wait... you're WAAAAY off the board... try again.\n")
         else:
             while True:
                 input_y = int(input("\nEnter the Y axis of your shot: \n"))
-                if (input_y <= 0 or input_y > game_size) or (input_x, input_y) in previous_player_turn:
+                if (input_y <= 0 or input_y > game_size) or (input_x - 1, input_y - 1) in previous_player_turn:
                     print("Wait... Either you've tried that before OR "
                           "you're WAAAAY off the board... try again.\n")
                 else:
@@ -260,10 +261,10 @@ def player_turn(player_board, computer_board):
             valid_shot = True
 
     previous_player_turn.add((input_x, input_y))
-    if computer_board[input_x][input_y] == " S ":
-        computer_board[input_x][input_y] = " H "
+    if computer_board[input_x - 1][input_y - 1] == " S ":
+        computer_board[input_x - 1][input_y - 1] = " H "
     else:
-        computer_board[input_x][input_y] = " M "
+        computer_board[input_x - 1][input_y - 1] = " M "
 
 
 previous_player_turn = set()
