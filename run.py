@@ -3,7 +3,7 @@ game_over = False
 player_wins = False
 computer_wins = False
 player_ships_remaining = 0
-computer_ships_remaining  = 0
+computer_ships_remaining = 0
 
 
 def game_menu():
@@ -15,7 +15,7 @@ def game_menu():
     while True:
         game_menu_options = input("Enter your choice: \n")
         if len(game_menu_options) != 1 or not game_menu_options.isdigit():
-            print("Menu Options are between 1 and 3, please")
+            print("Menu Options are between 1 and 2, please")
             continue
 
         game_menu_options = int(game_menu_options)
@@ -234,16 +234,18 @@ def display_current_boards(player_board, computer_board):
     print("\n")
 
 
-def display_remaining_ships(player_one, player_ships_remaining,computer_ships_remaining):
-    print(f"No# of {player_one}'s remaining ships: {player_ships_remaining}\n")
-    print(f"No# of computer's remaining ships: {computer_ships_remaining}\n")
+def display_remaining_ships(player_one,
+                            player_ships_remaining, computer_ships_remaining):
+    print(f"No of {player_one}'s remaining ships: {player_ships_remaining}\n")
+    print(f"No of computer's remaining ships: {computer_ships_remaining}\n")
 
 
 player_board, computer_board = make_specific_boards()
 player_board = position_player_ships(ship_num, player_board)
 computer_board = position_computer_ships(ship_num, computer_board)
 display_current_boards(player_board, computer_board)
-display_remaining_ships(player_one, player_ships_remaining,computer_ships_remaining)
+display_remaining_ships(player_one,
+                        player_ships_remaining, computer_ships_remaining)
 
 
 def player_turn(player_board, computer_board):
@@ -266,7 +268,9 @@ def player_turn(player_board, computer_board):
             except ValueError:
                 print("Come on, valid integers only, please... \n")
                 continue
-            if (input_x <= 0 or input_x > game_size) or (input_x, 0) in previous_player_turn:
+            if (input_x <= 0 or input_x > game_size) or (
+                    (input_x, 0)
+                    ) in previous_player_turn:
                 print("Wait... you're WAAAAY off the board... try again.\n")
             else:
                 break
@@ -278,7 +282,9 @@ def player_turn(player_board, computer_board):
             except ValueError:
                 print("Come on, valid integers only, please... \n")
                 continue
-            if (input_y <= 0 or input_y > game_size) or (input_x, input_y) in previous_player_turn:
+            if (input_y <= 0 or input_y > game_size) or (
+                    (input_x, input_y)
+                    ) in previous_player_turn:
                 print("Wait... Either you've tried that before OR "
                       "you're WAAAAY off the board... try again.\n")
             else:
@@ -315,9 +321,11 @@ def computer_turn(player_board, computer_board):
         input_x = random.randint(1, game_size)
         input_y = random.randint(1, game_size)
         # validate the shots - check they haven't been used in a previous turn
-        if (input_y > 0 and input_y <= game_size) and (input_x - 1, input_y - 1) not in previous_computer_turn:
+        if (input_y > 0 and input_y <= game_size) and (
+                (input_x - 1), (input_y - 1)
+                ) not in previous_computer_turn:
             valid_shot = True
-    
+
     previous_computer_turn.add((input_x - 1, input_y - 1))
     # mark whether shot is a hit or a miss on opponent's board
     if player_board[input_x - 1][input_y - 1] == " S ":
@@ -339,13 +347,15 @@ def game_turn():
     global game_over
     global player_ships_remaining
     global computer_ships_remaining
-    
+
     while not game_over:
         # update the display
         player_turn(player_board, computer_board)
         computer_turn(player_board, computer_board)
         display_current_boards(player_board, computer_board)
-        display_remaining_ships(player_one, player_ships_remaining,computer_ships_remaining)
+        display_remaining_ships(player_one,
+                                player_ships_remaining,
+                                computer_ships_remaining)
 
         # check to see if all computer ships are destroyed
         if computer_ships_remaining == 0:
@@ -355,15 +365,16 @@ def game_turn():
         if player_ships_remaining == 0:
             computer_wins = True
             game_over = True
-        
+
         # declare the winner
         if game_over:
             if player_wins:
                 print(f"CONGRATULATIONS {player_one}!!! You've won.\n")
                 print(f"Your victory leaves you {player_ships_remaining} "
-                       "remaining afloat")
+                      "remaining afloat")
             elif computer_wins:
                 print(f"GAME OVER {player_one}!!! You've lost.\n")
                 print(f"The computer still had {computer_ships_remaining}!")
+
 
 game_turn()
