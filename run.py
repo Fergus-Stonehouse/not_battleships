@@ -252,6 +252,7 @@ display_remaining_ships(player_one, player_ships_remaining,computer_ships_remain
 def player_turn(player_board, computer_board):
     global previous_player_turn
     global player_ships_remaining
+    global computer_ships_remaining
     """
     Function for the player to take their turn
     """
@@ -299,6 +300,8 @@ def computer_turn(player_board, computer_board):
     """
     # get the global variable to store the computer's shots
     global previous_computer_turn
+    global player_ships_remaining
+    global computer_ships_remaining
 
     valid_shot = False
 
