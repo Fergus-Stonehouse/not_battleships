@@ -245,29 +245,66 @@ def player_turn(player_board, computer_board):
     print(f"Enter a number for each axis between 1 and {game_size}.\n")
 
     valid_shot = False
-
+    # Get the player's x and y gueses and validate
     while not valid_shot:
-        input_x = int(input("\nEnter the X axis of your shot: \n"))
-        if (input_x <= 0 or input_x > game_size) or (input_x - 1, 0) in previous_player_turn:
-            print("Wait... you're WAAAAY off the board... try again.\n")
-        else:
-            while True:
-                input_y = int(input("\nEnter the Y axis of your shot: \n"))
-                if (input_y <= 0 or input_y > game_size) or (input_x - 1, input_y - 1) in previous_player_turn:
-                    print("Wait... Either you've tried that before OR "
-                          "you're WAAAAY off the board... try again.\n")
-                else:
-                    break
-            valid_shot = True
+        # Get X axis input
+        while True:
+            input_x = int(input("\nEnter the X axis of your shot: \n"))
+            if (input_x <= 0 or input_x > game_size) or (input_x - 1, 0) in previous_player_turn:
+                print("Wait... you're WAAAAY off the board... try again.\n")
+            else:
+                break
 
-    previous_player_turn.add((input_x, input_y))
+        # Get Y axis input
+        while True:
+            input_y = int(input("\nEnter the Y axis of your shot: \n"))
+            if (input_y <= 0 or input_y > game_size) or (input_x - 1, input_y - 1) in previous_player_turn:
+                print("Wait... Either you've tried that before OR "
+                      "you're WAAAAY off the board... try again.\n")
+            else:
+                break
+        valid_shot = True
+    # record the player's shot for later turns
+    previous_player_turn.add((input_x - 1, input_y - 1))
+    # mark whether shot is a hit or a miss on opponent's board
     if computer_board[input_x - 1][input_y - 1] == " S ":
         computer_board[input_x - 1][input_y - 1] = " H "
     else:
         computer_board[input_x - 1][input_y - 1] = " M "
 
 
+# make the global variable for the previous player's shots
 previous_player_turn = set()
-player_turn(player_board, computer_board)
 
+def computer_turn(player_board, computer_board):
+    """
+    Function for the computer to take it's secret shot
+    """
+    # get the global variable to store the computer's shots
+    global previous_computer_turn
+
+    valid_shot = False
+
+    while not valid_shot:
+        # Generate the random shot's x & y coords
+        input_x = random.randint(1, game_size)
+        input_y = random.randint(1, game_size)
+        # validate the shots - check they haven't been used in a previous turn
+        if (input_y > 0 and input_y <= game_size) and (input_x - 1, input_y - 1) not in previous_computer_turn:
+            valid_shot = True
+    
+    previous_computer_turn.add((input_x - 1, input_y - 1))
+    # mark whether shot is a hit or a miss on opponent's board
+    if player_board[input_x - 1][input_y - 1] == " S ":
+        player_board[input_x - 1][input_y - 1] = " H "
+    else:
+        player_board[input_x - 1][input_y - 1] = " M "
+
+
+# make the global variable for the previous computer's shots
+previous_computer_turn = set()
+
+# update the display
+player_turn(player_board, computer_board)
+computer_turn(player_board, computer_board)
 display_current_boards(player_board, computer_board)
