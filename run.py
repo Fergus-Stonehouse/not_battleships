@@ -236,7 +236,7 @@ def display_current_boards(player_board, computer_board):
 
 def display_remaining_ships(player_one,
                             player_ships_remaining, computer_ships_remaining):
-    print(f"No of {player_one}'s remaining ships: {player_ships_remaining}\n")
+    print(f"No of {player_one}'s remaining ships: {player_ships_remaining}")
     print(f"No of computer's remaining ships: {computer_ships_remaining}\n")
 
 
@@ -255,8 +255,8 @@ def player_turn(player_board, computer_board):
     """
     Function for the player to take their turn
     """
-    print(f"\nTake your shot, {player_one}!\n")
-    print(f"Enter a number for each axis between 1 and {game_size}.\n")
+    print(f"Take your shot, {player_one}!")
+    print(f"Enter a number for each axis between 1 and {game_size}.")
 
     valid_shot = False
     # Get the player's x and y gueses and validate
@@ -264,23 +264,23 @@ def player_turn(player_board, computer_board):
         # Get X axis input
         while True:
             try:
-                input_x = int(input("\nEnter the X axis of your shot: \n"))
+                input_x = int(input("\nEnter the X axis of your shot: "))
             except ValueError:
-                print("Come on, valid integers only, please... \n")
+                print("Come on, valid integers only, please... ")
                 continue
             if (input_x <= 0 or input_x > game_size) or (
                     (input_x, 0)
                     ) in previous_player_turn:
-                print("Wait... you're WAAAAY off the board... try again.\n")
+                print("Wait... you're WAAAAY off the board... try again.")
             else:
                 break
 
         # Get Y axis input
         while True:
             try:
-                input_y = int(input("\nEnter the Y axis of your shot: \n"))
+                input_y = int(input("\nEnter the Y axis of your shot: "))
             except ValueError:
-                print("Come on, valid integers only, please... \n")
+                print("Come on, valid integers only, please... ")
                 continue
             if (input_y <= 0 or input_y > game_size) or (
                     (input_x, input_y)
@@ -375,6 +375,8 @@ def game_turn():
             elif computer_wins:
                 print(f"GAME OVER {player_one}!!! You've lost.\n")
                 print(f"The computer still had {computer_ships_remaining}!")
+            else:
+                print("The Game has ended as a draw!")
 
 
 game_turn()
