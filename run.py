@@ -224,14 +224,13 @@ def display_current_boards(player_board, computer_board):
     """
     Function for displaying the boards
     """
-    print(f"{player_one}'s Board \n")
+    print(f"{player_one}'s Board")
     for row in player_board:
         print(" ".join(row))
     print("\n")
-    print("Computer's Board \n")
+    print("Computer's Board")
     for row in computer_board:
         print(" ".join(row))
-    print("\n")
 
 
 def display_remaining_ships(player_one,
@@ -286,7 +285,7 @@ def player_turn(player_board, computer_board):
                     (input_x, input_y)
                     ) in previous_player_turn:
                 print("Wait... Either you've tried that before OR "
-                      "you're WAAAAY off the board... try again.\n")
+                      "you're WAAAAY off the board... try again.")
             else:
                 break
         valid_shot = True
