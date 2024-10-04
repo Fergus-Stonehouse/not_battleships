@@ -11,7 +11,6 @@ def game_menu():
     print("Main Menu\n")
     print("1. Play a Game")
     print("2. How to Play")
-    print("3. End Program")
 
     while True:
         game_menu_options = input("Enter your choice: \n")
@@ -26,8 +25,6 @@ def game_menu():
                 break
             elif game_menu_options == 2:
                 instructions()
-            elif game_menu_options == 3:
-                break
         else:
             print('Please choose 1, 2 or 3 instead.\n')
 
@@ -264,7 +261,11 @@ def player_turn(player_board, computer_board):
     while not valid_shot:
         # Get X axis input
         while True:
-            input_x = int(input("\nEnter the X axis of your shot: \n"))
+            try:
+                input_x = int(input("\nEnter the X axis of your shot: \n"))
+            except ValueError:
+                print("Come on, valid integers only, please... \n")
+                continue
             if (input_x <= 0 or input_x > game_size) or (input_x, 0) in previous_player_turn:
                 print("Wait... you're WAAAAY off the board... try again.\n")
             else:
@@ -272,7 +273,11 @@ def player_turn(player_board, computer_board):
 
         # Get Y axis input
         while True:
-            input_y = int(input("\nEnter the Y axis of your shot: \n"))
+            try:
+                input_y = int(input("\nEnter the Y axis of your shot: \n"))
+            except ValueError:
+                print("Come on, valid integers only, please... \n")
+                continue
             if (input_y <= 0 or input_y > game_size) or (input_x, input_y) in previous_player_turn:
                 print("Wait... Either you've tried that before OR "
                       "you're WAAAAY off the board... try again.\n")
@@ -353,7 +358,6 @@ def game_turn():
         
         # declare the winner
         if game_over:
-            clear_terminal()
             if player_wins:
                 print(f"CONGRATULATIONS {player_one}!!! You've won.\n")
                 print(f"Your victory leaves you {player_ships_remaining} "
@@ -361,6 +365,5 @@ def game_turn():
             elif computer_wins:
                 print(f"GAME OVER {player_one}!!! You've lost.\n")
                 print(f"The computer still had {computer_ships_remaining}!")
-
 
 game_turn()
