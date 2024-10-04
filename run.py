@@ -1,5 +1,7 @@
 import random
 game_over = False
+player_wins = False
+computer_wins = False
 player_ships_remaining = 0
 computer_ships_remaining  = 0
 
@@ -262,7 +264,7 @@ def player_turn(player_board, computer_board):
         # Get X axis input
         while True:
             input_x = int(input("\nEnter the X axis of your shot: \n"))
-            if (input_x <= 0 or input_x > game_size) or (input_x - 1, 0) in previous_player_turn:
+            if (input_x <= 0 or input_x > game_size) or (input_x, 0) in previous_player_turn:
                 print("Wait... you're WAAAAY off the board... try again.\n")
             else:
                 break
@@ -270,23 +272,26 @@ def player_turn(player_board, computer_board):
         # Get Y axis input
         while True:
             input_y = int(input("\nEnter the Y axis of your shot: \n"))
-            if (input_y <= 0 or input_y > game_size) or (input_x - 1, input_y - 1) in previous_player_turn:
+            if (input_y <= 0 or input_y > game_size) or (input_x, input_y) in previous_player_turn:
                 print("Wait... Either you've tried that before OR "
                       "you're WAAAAY off the board... try again.\n")
             else:
                 break
         valid_shot = True
     # record the player's shot for later turns
-    previous_player_turn.add((input_x - 1, input_y - 1))
+    previous_player_turn.add((input_x, input_y))
     # mark whether shot is a hit or a miss on opponent's board
     if computer_board[input_x - 1][input_y - 1] == " S ":
         computer_board[input_x - 1][input_y - 1] = " H "
+        # if there's a HIT reduce the computer ships by 1
+        computer_ships_remaining -= 1
     else:
         computer_board[input_x - 1][input_y - 1] = " M "
 
 
 # make the global variable for the previous player's shots
 previous_player_turn = set()
+
 
 def computer_turn(player_board, computer_board):
     """
@@ -309,6 +314,8 @@ def computer_turn(player_board, computer_board):
     # mark whether shot is a hit or a miss on opponent's board
     if player_board[input_x - 1][input_y - 1] == " S ":
         player_board[input_x - 1][input_y - 1] = " H "
+        # if there's a HIT reduce the player ships by 1
+        player_ships_remaining -= 1
     else:
         player_board[input_x - 1][input_y - 1] = " M "
 
@@ -330,5 +337,27 @@ def game_turn():
         player_turn(player_board, computer_board)
         computer_turn(player_board, computer_board)
         display_current_boards(player_board, computer_board)
+        display_remaining_ships(player_one, player_ships_remaining,computer_ships_remaining)
+
+        # check to see if all computer ships are destroyed
+        if computer_ships_remaining == 0:
+            player_wins = True
+            game_over = True
+        # check to see if all the player's ships are destroyed
+        if player_ships_remaining == 0:
+            computer_wins = True
+            game_over = True
+        
+        # declare the winner
+        if game_over:
+            clear_terminal()
+            if player_wins:
+                print(f"CONGRATULATIONS {player_one}!!! You've won.\n")
+                print(f"Your victory leaves you {player_ships_remaining} "
+                       "remaining afloat")
+            elif computer_wins:
+                print(f"GAME OVER {player_one}!!! You've lost.\n")
+                print(f"The computer still had {computer_ships_remaining}!")
+
 
 game_turn()
