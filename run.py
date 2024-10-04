@@ -1,4 +1,7 @@
 import random
+game_over = False
+player_ships_remaining = 0
+computer_ships_remaining  = 0
 
 
 def game_menu():
@@ -152,6 +155,8 @@ game_size = get_game_size(game_size_option)
 
 ship_num_option = ship_num_option()
 ship_num = get_ship_num(ship_num_option)
+player_ships_remaining = get_ship_num(ship_num_option)
+computer_ships_remaining = get_ship_num(ship_num_option)
 
 print(f'Okay, {player_one}, you want a {game_size} x {game_size} game '
       'board with {ship_num} ships. \n')
@@ -162,7 +167,7 @@ def build_game_board(game_size):
     Function to build the initial game board based on user's choice
     """
     game_board = []
-    
+
     for row in range(game_size):
         rows = []
         for column in range(game_size):
@@ -230,14 +235,21 @@ def display_current_boards(player_board, computer_board):
     print("\n")
 
 
+def display_remaining_ships(player_one, player_ships_remaining,computer_ships_remaining):
+    print(f"No# of {player_one}'s remaining ships: {player_ships_remaining}\n")
+    print(f"No# of computer's remaining ships: {computer_ships_remaining}\n")
+
+
 player_board, computer_board = make_specific_boards()
 player_board = position_player_ships(ship_num, player_board)
 computer_board = position_computer_ships(ship_num, computer_board)
 display_current_boards(player_board, computer_board)
+display_remaining_ships(player_one, player_ships_remaining,computer_ships_remaining)
 
 
 def player_turn(player_board, computer_board):
     global previous_player_turn
+    global player_ships_remaining
     """
     Function for the player to take their turn
     """
@@ -304,7 +316,19 @@ def computer_turn(player_board, computer_board):
 # make the global variable for the previous computer's shots
 previous_computer_turn = set()
 
-# update the display
-player_turn(player_board, computer_board)
-computer_turn(player_board, computer_board)
-display_current_boards(player_board, computer_board)
+
+def game_turn():
+    """
+    Function to end the game when there is a winner
+    """
+    global game_over
+    global player_ships_remaining
+    global computer_ships_remaining
+    
+    while not game_over:
+        # update the display
+        player_turn(player_board, computer_board)
+        computer_turn(player_board, computer_board)
+        display_current_boards(player_board, computer_board)
+
+game_turn()
