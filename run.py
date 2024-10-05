@@ -1,9 +1,9 @@
 import random
 game_over = False
-player_wins = False
-computer_wins = False
 player_ships_remaining = 0
 computer_ships_remaining = 0
+player_wins = False
+computer_wins = False
 
 
 def game_menu():
@@ -178,10 +178,11 @@ def build_game_board(game_size):
 def make_specific_boards():
     player_board = build_game_board(game_size)
     computer_board = build_game_board(game_size)
-    return player_board, computer_board
+    computer_visible_board = build_game_board(game_size)
+    return player_board, computer_board, computer_visible_board
 
 
-player_board, computer_board = make_specific_boards()
+player_board, computer_board, computer_visible_board = make_specific_boards()
 
 
 def position_player_ships(ship_num, player_board):
@@ -202,10 +203,7 @@ def position_player_ships(ship_num, player_board):
     return player_board
 
 
-def position_computer_ships(ship_num, computer_board):
-    """
-    Function to randomly place the computer's ships on their board
-    """
+def position_computer_ships(ship_num, computer_board, computer_visible_board):
     computer_ship_coords = set()
     ships_placed = 0
     while ships_placed < ship_num:
@@ -215,21 +213,19 @@ def position_computer_ships(ship_num, computer_board):
         if computer_coords not in computer_ship_coords:
             if computer_board[row][column] == " - ":
                 computer_board[row][column] = " S "
+                computer_visible_board[row][column] = " - "
                 computer_ship_coords.add(computer_coords)
                 ships_placed += 1
-    return computer_board
+    return computer_board, computer_visible_board
 
 
-def display_current_boards(player_board, computer_board):
-    """
-    Function for displaying the boards
-    """
+def display_current_boards(player_board, computer_visible_board):
     print(f"{player_one}'s Board")
     for row in player_board:
         print(" ".join(row))
     print("\n")
-    print("Computer's Board")
-    for row in computer_board:
+    print("Computer's Board (Visible)")
+    for row in computer_visible_board:
         print(" ".join(row))
 
 
@@ -239,10 +235,12 @@ def display_remaining_ships(player_one,
     print(f"No of computer's remaining ships: {computer_ships_remaining}\n")
 
 
-player_board, computer_board = make_specific_boards()
+player_board, computer_board, computer_visible_board = make_specific_boards()
 player_board = position_player_ships(ship_num, player_board)
-computer_board = position_computer_ships(ship_num, computer_board)
-display_current_boards(player_board, computer_board)
+computer_board, computer_visible_board = (
+    position_computer_ships(
+        ship_num, computer_board, computer_visible_board))
+display_current_boards(player_board, computer_visible_board)
 display_remaining_ships(player_one,
                         player_ships_remaining, computer_ships_remaining)
 
@@ -293,11 +291,11 @@ def player_turn(player_board, computer_board):
     previous_player_turn.add((input_x, input_y))
     # mark whether shot is a hit or a miss on opponent's board
     if computer_board[input_x - 1][input_y - 1] == " S ":
-        computer_board[input_x - 1][input_y - 1] = " H "
+        computer_visible_board[input_x - 1][input_y - 1] = " H "
         # if there's a HIT reduce the computer ships by 1
         computer_ships_remaining -= 1
     else:
-        computer_board[input_x - 1][input_y - 1] = " M "
+        computer_visible_board[input_x - 1][input_y - 1] = " M "
 
 
 # make the global variable for the previous player's shots
@@ -346,12 +344,14 @@ def game_turn():
     global game_over
     global player_ships_remaining
     global computer_ships_remaining
+    global player_wins
+    global computer_wins
 
     while not game_over:
         # update the display
         player_turn(player_board, computer_board)
         computer_turn(player_board, computer_board)
-        display_current_boards(player_board, computer_board)
+        display_current_boards(player_board, computer_visible_board)
         display_remaining_ships(player_one,
                                 player_ships_remaining,
                                 computer_ships_remaining)
