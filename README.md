@@ -23,11 +23,7 @@
 - [New site Users](#new-site-users)
 - [Returning Site Users](#returning-site-users)
 
-[Wireframes](#wireframes)
-
-- [Mobile Wireframes](#mobile-wireframes)
-- [Tablet Wireframes](#tablet-wireframes)
-- [Desktop Wireframes](#desktop-wireframes)
+[Flow](#flow)
 
 [Features](#features)
 
@@ -71,84 +67,34 @@ Below are two mockup images of the Your Weather website created using the "Am I 
 
 ### Colour Scheme
 
-- The chosen colour scheme for Your Weather is designed to be inviting and have a neutral aesthetic while giving a nice splash of colour.
-- The colours used are as follows:-
-
-- `#9ecffa` used for primary text.
-- `#9ecffa` used for primary highlights.
-- `#fafafa` used for secondary text.
-- `#fafafa` used for secondary highlights.
-- `#7f0ffb and #c27b6f` combined to create a linear gradient background.
-- `#000` used for box shadows and modal background.
-
-I used [coolors.co](https://coolors.co/7f0ffb-c27b6f-9ecffa-fafafa-000000) to generate my colour palette.
-
-<details>
-<summary>Click for Coolors screenshot</summary>
-
-![screenshot](documentation/ux/Create%20a%20Palette%20-%20Coolors.png)
-
-</details><br>
-
-I have used CSS `:root` variables to easily update the global colour scheme by changing only one value, instead of everywhere in the CSS file.
-
-```css
-:root {
-  --display-background: linear-gradient(135deg, #7f0ffb, #c27b6f);
-  --text-color: #9ecffa;
-  --text-hover-color: #fafafa;
-  --box-shadow-color: #000;
-  --drop-shadow-color: #9ecffa;
-  --modal-background: rgba(0, 0, 0, 0.4);
-}
-```
+- Colour scheme is limited to a black background and white text.
 
 ### Typography
 
-- I used the Google Font called 'Play' for the Your Weather site.
-- I felt that this font had a nice modern style that is easy to read and that it fitted well with the Your Weather site.
-
-- [Play](https://fonts.google.com/specimen/Play) was used for all text within the site.
-
-- [Font Awesome](https://fontawesome.com) icons were used in the Your Weather site, for GitHub links in the footer and modal and for the search icon in the main weather card.
+- The Typography is limited to the terminal font used within the basic Heroku utility.
 
 ## User Stories
 
+Sadly, I haven't had the chance to get any actual feedback from friends and / or family.  But this is what I'm hoping they would tell me:
+
 ### New Site Users
 
-- As a new site user, I would like to know what the site is about, so that I understand what the site does.
-- As a new site user, I would like to search my local area, so that I can see what the weather is today.
-- As a new site user, I would like to search my local area, so that I can see the forecast for the next few days.
-- As a new site user, I would like to search other areas, so that I can see the weather in those areas.
-- As a new site user, I would like to search other areas, so that I can se the forecast for those areas.
+- As a new site user, I would like to have a main menu.
+- As a new site user, I would like to know how to play the game.
+- As a new site user, I would like to clear instructions throughout the game.
 
 ### Returning Site Users
 
-- As a returning site user, I would like to search a place I am visiting, so that I can see the weather and plan accordingly.
-- As a returning site user, I would like to be able to change the format, so that I can view the weather in my native measurements.
+- As a returning site user, I would like to choose the size of the map.
+- As a returning site user, I would like to choose how many ships each side plays with.
 
-## Wireframes
+## Flow
 
-To follow best practice, wireframes were developed for mobile, tablet, and desktop sizes.
-I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wireframes.
+In order to figure out the order of how the program was going to be organised a flow diagram was produced.
 
-### Mobile Wireframes
-
-| Main page | About modal | Displayed weather |
-| :---: | :---: | :---: |
-| ![screenshot](documentation/wireframes/mobile-main-page.png) | ![screenshot](documentation/wireframes/mobile-about-modal.png) | ![screenshot](documentation/wireframes/mobile-displayed-weather.png) |
-
-### Tablet Wireframes
-
-| Main page | About modal | Displayed weather |
-| :---: | :---: | :---: |
-| ![screenshot](documentation/wireframes/tablet-main-page.png) | ![screenshot](documentation/wireframes/tablet-about-modal.png) | ![screenshot](documentation/wireframes/tablet-displayed-weather.png) |
-
-### Desktop Wireframes
-
-| Main page | About modal | Displayed weather |
-| :---: | :---: | :---: |
-| ![screenshot](documentation/wireframes/desktop-main-page.png) | ![screenshot](documentation/wireframes/desktop-about-modal.png) | ![screenshot](documentation/wireframes/desktop-displayed-weather.png) |
+| Flow Diagram |
+| :---: |
+| ![screenshot](documentation/flowchart/Not_Bat_Flow.jpg) |
 
 ## Features
 
@@ -156,8 +102,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 | Feature | Description | Screenshot |
 | :---: | :---: | :---: |
-| **About Your Weather** | The 'About Your Weather' button opens a modal that gives a little information about the site and it's creator. | ![screenshot](documentation/features/modal-button.png) |
-| **About Your Weather Modal** | The 'About Your Weather Modal' displays what the site is about, what you can do on the site and why the site was created. It also contains links to the repository and where it is hosted. | ![screenshot](documentation/features/modal.png) |
+| **Game Menu** | The Program required an introduction screen that offers the options to play or get instructions. | ![screenshot](documentation/features/game_menu.png) |
+| **Instructions** | I simple outline of the game and how to win and how to play. | ![screenshot](documentation/features/instructions.png) |
 | **City Input Box** | The 'City Input Box' is where the user can input their town or city name for which the site can then generate the details from. | ![screenshot](documentation/features/input-box.png) |
 | **Search Button** | The 'Search Button' is available so that the user can can confirm their town or city input and the site will search for the weather of that town or city, this is especially needed for mobile devices where there is no enter key. | ![screenshot](documentation/features/search-button.png) |
 | **Metric / Imperial Toggle** | The 'Metric / Imperial Toggle' is for users who prefer their weather data in the format they are most used to, e.g. Europe - Metric / U.S. - Imperial. | ![screenshot](documentation/features/temp-toggle-c.png) ![screenshot](documentation/features/temp-toggle-f.png) |
