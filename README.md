@@ -32,20 +32,9 @@
 
 [Testing](#testing)
 
-[Deployment](#deployment)
-
-- [Local Deployment](#local-deployment)
-
-  - [Cloning](#cloning)
-  - [Forking](#forking)
-
-- [Local vs Deployment](#local-vs-deployment)
-
 [Credits](#credits)
 
 - [Content and Code](#content-and-code)
-
-- [Media](#media)
 
 - [Acknowledgments](#acknowledgements)
 
@@ -111,112 +100,60 @@ In order to figure out the order of how the program was going to be organised a 
 
 ### Future Features
 
-- Moonrise and Moonset Times
-  - A feature to display what time the moon is visible in the searched area.
-- Moonphase
-  - A feature to display the current phase of the moon in the searched area.
-- Wind direction
-  - A feature to display the direction of the wind in the searched area.
-- Explanation modals
-  - A feature to display and brief explanation of the indepth weather measurements.
+- Traditional Ship Sizes
+  - A feature that adds the original ships and their sizes to the game
+- Add directions for the ships
+  - Allow the original ships to be based on a horizontal or vertical axxis
+- More player options
+  - Allow the player to place their own ships
 
 ## Tools & Technologies Used
 
-- [HTML](https://en.wikipedia.org/wiki/HTML) used for the main site content.
-- [CSS](https://en.wikipedia.org/wiki/CSS) used for the main site design and layout.
-- [CSS :root variables](https://www.w3schools.com/css/css3_variables.asp) used for reusable styles throughout the site.
-- [CSS Flexbox](https://www.w3schools.com/css/css3_flexbox.asp) used for an enhanced responsive layout.
-- [JavaScript](https://www.javascript.com) used for user interaction on the site.
+- [Python](https://www.python.org/) used for the main program content.
 - [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
 - [GitHub](https://github.com) used for secure online code storage.
-- [GitHub Pages](https://pages.github.com) used for hosting the deployed front-end site.
-- [VSCode](https://code.visualstudio.com/) used for local IDE for development.
-- [Krita](https://krita.org/en/) used for editing images, screenshots and favicon.
-- [Favicon.cc](https://www.favicon.cc/) used to create the favicon.
-- [Google Fonts](https://fonts.google.com/) used to search a suitable font and obtain a download link for that font.
-- [Font Awesome](https://fontawesome.com/) used to add GitHub icon to the footer and modal and search icon to the search button.
+- [Heroku](https://www.heroku.com) used for hosting the deployed front-end site.
+- [Pi] (https:/www.pi.ai/talk) used for finding faults with syntax and indentation.
 
 ## Testing
 
-For all testing, please refer to the [TESTING.md](TESTING.md) file.
+Testing required a LOT of trying to run through the code.  The issues came up in the following places:
+- Positioning of ships: positioning the ships started out so that all ships were visible for testing
+- position of computer ships: once the testing was completed the computer ships had to be hidden.
+- A running problem was displaying the boards, determining the empty cells and those that had ships present
+- the solution to having hidden ships was ultimately to have two computer boards, one specifically being VISIBLE
+- validation for the player's name: it is the only part of the game that actually takes a string response
+- validation was made more clear after speaking with my mentor; what could a user potentially input instead of what is expected.
+- the player's turn: having to remember that the shot needed to be recorded to the computer's VISIBLE game board
+- creating turns that would allow the game to recognise the wining conditions without useing a score.
 
 ## Deployment
 
-The site was deployed to GitHub Pages. The steps to deploy are as follows:
+The site was deployed to Heroku.
 
-- In the [GitHub repository](https://github.com/boderg/your-weather), navigate to the Settings tab.
-- From the source section drop-down menu, select the **Main** Branch, then click "Save".
-- The page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
-
-The live link can be found [here](https://boderg.github.io/your-weather).
-
-### Local Deployment
-
-This project can be cloned or forked in order to make a local copy on your own system.
-
-#### Cloning
-
-You can clone the repository by following these steps:
-
-1. Go to the [GitHub repository](https://github.com/boderg/your-weather).
-2. Locate the Code button above the list of files and click it.
-3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard.
-4. Open Git Bash or Terminal.
-5. Change the current working directory to the one where you want the cloned directory.
-6. In your IDE Terminal, type the following command to clone my repository:
-    - `git clone https://github.com/boderg/your-weather.git`
-7. Press Enter to create your local clone.
-
-Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/boderg/your-weather).
-
-Please note that in order to directly open the project in Gitpod, you need to have the browser extension installed.
-A tutorial on how to do that can be found [here](https://www.gitpod.io/docs/configure/user-settings/browser-extension).
-
-#### Forking
-
-By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository.
-You can fork this repository by using the following steps:
-
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/boderg/your-weather).
-2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
-3. Once clicked, you should now have a copy of the original repository in your own GitHub account.
-
-### Local vs Deployment
-
-There are no notable differences between my local developed site and the GitHub pages deployed site.
+- In the [Heroku](https://dashboard.heroku.com/apps/notbattleships/deploy/github)
 
 ## Credits
 
-The following are credits to various people and technologies that have directly or otherwise assisted in the creation of the Your Weather site.
+The following are credits to various people and technologies that have directly or otherwise assisted in the creation of the Not Battleships game.
 
 ### Content and Code
 
 | Source | Location | Notes |
 | --- | --- | --- |
-| [Markdown Builder](https://tim.2bn.dev/markdown-builder) | README and TESTING | tool to help generate the Markdown files |
-| [Chris Beams](https://chris.beams.io/posts/git-commit) | version control | "How to Write a Git Commit Message" |
-| [W3Schools](https://www.w3schools.com/howto/howto_css_modals.asp) | Main page | interactive pop-up (modal) for the about section |
-| [W3Schools](https://www.w3schools.com/howto/howto_css_switch.asp) | Main page | interactive toggle switch |
-| [YouTube](https://www.youtube.com/watch?v=WZNG8UomjSI&t=1783s) | Main page | a source to get an idea of how to lay out the page |
-| [Coding Nepal](https://www.codingnepalweb.com/weather-app-project-html-javascript/) | Main page | a source to get an idea for how to structure my javascript file |
-| [Geeks for Geeks](https://www.geeksforgeeks.org/weather-app-using-vanilla-javascript/) | Main page | a source to get an idea for layout and structure my javascript file |
-| [Toptal](https://www.toptal.com/software/definitive-guide-to-datetime-manipulation) | Javascript | conversion and parsing of unix time stamp |
-| [Wikipedia](https://en.wikipedia.org/wiki/List_of_short_place_names) | Javascript | helped in determining whether name validation is needed or not |
-| [Open Weather](https://openweathermap.org/) | API Data | api used to retrieve data for the site |
-
-### Media
-
-| Source | Location | Type | Notes |
-| --- | --- | --- | --- |
-| [Unsplash](https://source.unsplash.com/random?landscape) | Main changing background | image | Landscape image selection |
+| [Python.org](https://www.python.org) | Research | further understaning of paython functions and validation |
+| [YouTube](https://www.youtube.com/watch?v=WZNG8UomjSI&t=1783s) | Research | a LOT of python coding techniques |
+| [Stack Overflow](https://stackoverflow.com/) | Research | additional Python research |
+| [Medium](https://medium.com/) | Research | additional Python research |
+| [She Codes](https://shecodes.io/) | Research | additional Python research |
+| [Geeks for Geeks](https://geeksforgeeks.org/) | Research | additional Python research |
+| [Pi](https:/www.pi.ai/talk) | Validation | additional Python research and checking for syntax and indentation faults |
 
 ### Acknowledgements
 
 - I would like to thank my Code Institute mentor, [Chris Quinn](https://github.com/10xOXR) for their support throughout the development of this project.
-- I would like to thank my previous Code Institute mentor, [Tim Nelson](https://github.com/TravelTimN) for their encouragement to continue my journey after my one project course had finished.
-- I would like to thank [Code Institute](https://codeinstitute.net) for giving me the opportunity to complete the 4P course.
-- I would like to thank the [Code Institute](https://codeinstitute.net) facilitator team [Iris Smok](https://github.com/Iris-Smok/Iris-Smok) and Irene Neville for their advice.
+- I would like to thank [Code Institute](https://codeinstitute.net) for giving me the opportunity to learn full stack software programming - it's been a ride!
+- I would like to thank the [Code Institute](https://codeinstitute.net) Tutor team for the support and the fresh pair of eyes whenever I required them.  The ongoing support made this portfolio project happen.
 - I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support and general information that helps with my studies.
-- I would like to thank my family, for their support and understanding, for believing in me, and allowing me to make this transition into software development.
+- I would like to thank my family and friends for their ongoing support and patience.
+- I would especially like to thank my partner for her support: without her I simply wouldn't have been able to juggle the course, work and sleep with any degree of efficiency.
