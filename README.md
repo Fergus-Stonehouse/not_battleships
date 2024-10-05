@@ -11,8 +11,6 @@
 <details>
 <summary>Click here for Table of Contents</summary>
 
-[Mockup Screenshots](#mockup-screenshots)
-
 [UX](#ux)
 
 - [Colour Scheme](#colour-scheme)
@@ -32,6 +30,10 @@
 
 [Testing](#testing)
 
+[Validation](#validation)
+
+- [Python](#python)
+
 [Credits](#credits)
 
 - [Content and Code](#content-and-code)
@@ -39,14 +41,6 @@
 - [Acknowledgments](#acknowledgements)
 
 </details>
-
-## Mockup Screenshots
-
-Below are two mockup images of the Your Weather website created using the "Am I Responsive" website.
-
-| Screenshot 1 | Screenshot 2 |
-| :---: | :---: |
-| ![screenshot](documentation/mockups/Am%20I%20Responsive1.png) | ![screenshot](documentation/mockups/Am%20I%20Responsive2.png) |
 
 ## UX
 
@@ -83,7 +77,7 @@ In order to figure out the order of how the program was going to be organised a 
 
 | Flow Diagram |
 | :---: |
-| ![screenshot](documentation/flowchart/Not_Bat_Flow.jpg) |
+| ![screenshot](assets/documentation/flowchart/Not_Bat_Flow.jpg) |
 
 ## Features
 
@@ -91,12 +85,10 @@ In order to figure out the order of how the program was going to be organised a 
 
 | Feature | Description | Screenshot |
 | :---: | :---: | :---: |
-| **Game Menu** | The Program required an introduction screen that offers the options to play or get instructions. | ![screenshot](documentation/features/game_menu.png) |
-| **Instructions** | I simple outline of the game and how to win and how to play. | ![screenshot](documentation/features/instructions.png) |
-| **City Input Box** | The 'City Input Box' is where the user can input their town or city name for which the site can then generate the details from. | ![screenshot](documentation/features/input-box.png) |
-| **Search Button** | The 'Search Button' is available so that the user can can confirm their town or city input and the site will search for the weather of that town or city, this is especially needed for mobile devices where there is no enter key. | ![screenshot](documentation/features/search-button.png) |
-| **Metric / Imperial Toggle** | The 'Metric / Imperial Toggle' is for users who prefer their weather data in the format they are most used to, e.g. Europe - Metric / U.S. - Imperial. | ![screenshot](documentation/features/temp-toggle-c.png) ![screenshot](documentation/features/temp-toggle-f.png) |
-| **Footer** | The footer contains a link to the creators GitHub along with the project details. | ![screenshot](documentation/features/footer.png) |
+| **Game Menu** | The Program required an introduction screen that offers the options to play or get instructions. | ![screenshot](assets/documentation/features/game_menu.png) |
+| **Instructions** | I simple outline of the game and how to win and how to play. | ![screenshot](assets/documentation/features/instructions.png) |
+| **Game Parameters** | The user can choose the game size and number of ships to be included. | ![screenshot](assets/documentation/features/not_bat_param.jpg) |
+| **Game Boards** | The game provides two boards, one for the player's and the other showing where the player had fired on the computer. | ![screenshot](assets/documentation/features/not_bat_game.jpg) |
 
 ### Future Features
 
@@ -127,6 +119,16 @@ Testing required a LOT of trying to run through the code.  The issues came up in
 - the player's turn: having to remember that the shot needed to be recorded to the computer's VISIBLE game board
 - creating turns that would allow the game to recognise the wining conditions without useing a score.
 
+## Code Validation
+
+### Python
+
+I have used the recommended [PEP8 Validation](https://pep8ci.herokuapp.com/#) to validate my Python files.
+
+| Page | Screenshot | Notes |
+| :---: | :---: | :---: |
+| Index | ![screenshot](assets/documentation/validation/not_bat_pep8.jpg) | All clear, no errors found.|
+
 ## Deployment
 
 The site was deployed to Heroku.
@@ -148,6 +150,7 @@ The following are credits to various people and technologies that have directly 
 | [She Codes](https://shecodes.io/) | Research | additional Python research |
 | [Geeks for Geeks](https://geeksforgeeks.org/) | Research | additional Python research |
 | [Pi](https:/www.pi.ai/talk) | Validation | additional Python research and checking for syntax and indentation faults |
+| [PEP8 Validation](https://pep8ci.herokuapp.com/#) | Code compliance | checking for compliance to PEP8 expectations |
 
 ### Acknowledgements
 
