@@ -158,7 +158,7 @@ player_ships_remaining = get_ship_num(ship_num_option)
 computer_ships_remaining = get_ship_num(ship_num_option)
 
 print(f'Okay, {player_one}, you want a {game_size} x {game_size} game '
-      'board with {ship_num} ships. \n')
+      f'board with {ship_num} ships. \n')
 
 
 def build_game_board(game_size):
